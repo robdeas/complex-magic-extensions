@@ -25,6 +25,10 @@ val Float?.j: Complex
 
     get() = if (this == null) throw IllegalArgumentException("Invalid data for creating an Imaginary Number") else Complex(0.0, this.toDouble())
 
+val BigInteger?.j: Complex
+    get() = if (this == null) throw IllegalArgumentException("Invalid data for creating an Imaginary Number") else Complex(0.0, this.toDouble())
+
+
 val BigDecimal?.j: Complex
     get() = if (this == null) throw IllegalArgumentException("Invalid data for creating an Imaginary Number") else Complex(0.0, this.toDouble())
 
@@ -57,6 +61,12 @@ infix fun Float?.plusJ(imaginary: Float?): Complex{
     )
 }
 
+infix fun BigInteger?.plusJ(imaginary: BigInteger?): Complex{
+    return Complex(
+        this ?:throw IllegalArgumentException("Invalid data for creating an Imaginary Number"),
+        imaginary ?:throw IllegalArgumentException("Invalid data for creating an Imaginary Number")
+    )
+}
 infix fun BigDecimal?.plusJ(imaginary: BigDecimal?): Complex{
     return Complex(
         this ?:throw IllegalArgumentException("Invalid data for creating an Imaginary Number"),
